@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <title>Just a Simple Map</title>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_c905045f5aa44999ad8fe3836067d81f {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_c905045f5aa44999ad8fe3836067d81f" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_c905045f5aa44999ad8fe3836067d81f = L.map(
+                                  'map_c905045f5aa44999ad8fe3836067d81f',
+                                  {center: [-23.649454,-46.738778],
+                                  zoom: 20,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_5e33c60ae5374eae921277d88bbba94d = L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_c905045f5aa44999ad8fe3836067d81f);
+        
+    
+
+            var marker_e0a3bfd84a104caa888779cdacdf2544 = L.marker(
+                [-23.649454,-46.738778],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_c905045f5aa44999ad8fe3836067d81f);
+            
+    
+            var popup_51dc37cbb8354ae29750b3e58b441709 = L.popup({maxWidth: '300'});
+
+            
+                var html_9f09d9ae462c4e5bafc312cc7f3ffa5d = $('<div id="html_9f09d9ae462c4e5bafc312cc7f3ffa5d" style="width: 100.0%; height: 100.0%;">Home</div>')[0];
+                popup_51dc37cbb8354ae29750b3e58b441709.setContent(html_9f09d9ae462c4e5bafc312cc7f3ffa5d);
+            
+
+            marker_e0a3bfd84a104caa888779cdacdf2544.bindPopup(popup_51dc37cbb8354ae29750b3e58b441709);
+
+            
+        
+</script>
