@@ -53,3 +53,50 @@ function showError(error) {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Geo Test</title>
+        
+</head>                             
+<body>
+
+<button onclick="getLocation()">Try It</button>
+
+<div id='map' style='width: 400px; height: 300px;'></div>
+
+<script>
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9'
+        center: [position.coords.longitude, position.coords.latitude]
+    });
+}
+
+
+
+</script>
+
+<script>
+
+</script>
+
+
+</html>
