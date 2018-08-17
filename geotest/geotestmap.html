@@ -16,6 +16,15 @@
 
 <div id='map'></div>
 <script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
+    var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+    center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
+    zoom: 9 // starting zoom
+});
+</script>
+<script>
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -27,7 +36,7 @@ function getLocation() {
 
 function showPosition(position) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
-var map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
     center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
