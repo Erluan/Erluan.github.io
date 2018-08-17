@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <meta charset='utf-8' />
     <title>Display a map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -10,40 +12,24 @@
         body { margin:0; padding:0; }
 /*        #map { position:absolute; top:0; bottom:0; width:60%; }*/
     </style>
+
 </head>
+
 <body>
 
 <div id='map' style='width: 400px; height: 300px;'></div>
+
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
-    var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [-46.73881990626774, -23.649688055338736], // starting position [lng, lat]
-    zoom: 15 // starting zoom
-});
-</script>
-<!-- <script>
 
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        alert("Geolocation is not supported by this browser.");
-    }
-}
-
-function showPosition(position) {
     mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
-    var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
-    zoom: 9 // starting zoom
-});
-}
-    
-</script> -->
+        var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+        center: [-46.73881990626774, -23.649688055338736], // starting position [lng, lat]
+        zoom: 15 // starting zoom
+    });
+
+</script>       
 </body>
 </html>
 
