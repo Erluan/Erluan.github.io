@@ -9,20 +9,33 @@
 </head>                             
 <body>
 
-<p id="demo">Click the button to get your position.</p>
+<button onclick="getLocation()">Try It</button>
 
 <div id='map' style='width: 400px; height: 300px;'></div>
 
 <script>
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
 
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9'
-    center: [-74.50, 40],
+function showPosition(position) {
 
-});
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvdG05djkifQ.kVOP6Rke0m97LAo2p7ZX-Q';
+
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9'
+        center: [position.coords.longitude, position.coords.latitude]
+    });
+}
+
+
+
 </script>
 
 <button onclick="getLocation()">Try It</button>
