@@ -12,7 +12,6 @@
     </style>
 </head>
 <body>
-<button onclick="getLocation()">Try It</button>
 
 <div id='map'></div>
 <script>
@@ -20,11 +19,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZXJsdWFuIiwiYSI6ImNqa3g4M3VjcTA0eXozdm1tY2tvd
     var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
+    center: [-46.73881990626774, -23.649688055338736], // starting position [lng, lat]
     zoom: 9 // starting zoom
 });
 </script>
-<script>
+<!-- <script>
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -44,7 +43,7 @@ function showPosition(position) {
 });
 }
     
-</script>
+</script> -->
 </body>
 </html>
 
