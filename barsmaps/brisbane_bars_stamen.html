@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bars in Brisbane - V2</title>
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_6555183a498742ffa40bd4eb0a6b9be3 {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_6555183a498742ffa40bd4eb0a6b9be3" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_6555183a498742ffa40bd4eb0a6b9be3 = L.map(
+                                  'map_6555183a498742ffa40bd4eb0a6b9be3',
+                                  {center: [-27.4697707,153.02512350000006],
+                                  zoom: 14,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_7fd56efad839427c9c81a0e2f9a09a14 = L.tileLayer(
+                'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_6555183a498742ffa40bd4eb0a6b9be3);
+        
+    
+            var marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b = L.markerClusterGroup({
+                
+            });
+            map_6555183a498742ffa40bd4eb0a6b9be3.addLayer(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+
+            var marker_62adfd13a7fb4852aed112f1e7cadd87 = L.marker(
+                [-27.4670169,153.0282429],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_98d5afad854b417c8849a623786aabaf = L.popup({maxWidth: '300'});
+
+            
+                var html_865991adfec946c39d7aeb09aae7b265 = $('<div id="html_865991adfec946c39d7aeb09aae7b265" style="width: 100.0%; height: 100.0%;">The Gresham Bar - 308 Queen St</div>')[0];
+                popup_98d5afad854b417c8849a623786aabaf.setContent(html_865991adfec946c39d7aeb09aae7b265);
+            
+
+            marker_62adfd13a7fb4852aed112f1e7cadd87.bindPopup(popup_98d5afad854b417c8849a623786aabaf);
+
+            
+        
+    
+
+            var marker_f17a0639ba5f472aaf65162902fd8117 = L.marker(
+                [-27.4716983,153.0255427],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_d956205748da488db6877f504942c870 = L.popup({maxWidth: '300'});
+
+            
+                var html_f10d417460664297947a8f1ce1b1f052 = $('<div id="html_f10d417460664297947a8f1ce1b1f052" style="width: 100.0%; height: 100.0%;">John Mills Himself - 40 Charlotte St</div>')[0];
+                popup_d956205748da488db6877f504942c870.setContent(html_f10d417460664297947a8f1ce1b1f052);
+            
+
+            marker_f17a0639ba5f472aaf65162902fd8117.bindPopup(popup_d956205748da488db6877f504942c870);
+
+            
+        
+    
+
+            var marker_2a21bf0c5ca444c9888cd7b2f6e89cdb = L.marker(
+                [-27.4695389,153.0241297],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_953afc461df047e38ca5bb811c6789ae = L.popup({maxWidth: '300'});
+
+            
+                var html_892a86d35f194783891e99a0f033c9aa = $('<div id="html_892a86d35f194783891e99a0f033c9aa" style="width: 100.0%; height: 100.0%;">Super Whatnot - 48 Burnett Ln</div>')[0];
+                popup_953afc461df047e38ca5bb811c6789ae.setContent(html_892a86d35f194783891e99a0f033c9aa);
+            
+
+            marker_2a21bf0c5ca444c9888cd7b2f6e89cdb.bindPopup(popup_953afc461df047e38ca5bb811c6789ae);
+
+            
+        
+    
+
+            var marker_c4810f9a0f2c4108a1d585281c012d7d = L.marker(
+                [-27.4669191,153.0295513],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_0596bd2244ea42b6984907db8b2fa7a1 = L.popup({maxWidth: '300'});
+
+            
+                var html_9267a45ea5444709b3698a5000d6c965 = $('<div id="html_9267a45ea5444709b3698a5000d6c965" style="width: 100.0%; height: 100.0%;">Brooklyn Standard - Eagle Ln</div>')[0];
+                popup_0596bd2244ea42b6984907db8b2fa7a1.setContent(html_9267a45ea5444709b3698a5000d6c965);
+            
+
+            marker_c4810f9a0f2c4108a1d585281c012d7d.bindPopup(popup_0596bd2244ea42b6984907db8b2fa7a1);
+
+            
+        
+    
+
+            var marker_3dd87d556d934d3d88aba34a7cc23fa6 = L.marker(
+                [-27.4588013,153.0343315],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_2ffc680793204bb8bb38674a03357717 = L.popup({maxWidth: '300'});
+
+            
+                var html_6f093ebc850b4c5ba629628d40bc0237 = $('<div id="html_6f093ebc850b4c5ba629628d40bc0237" style="width: 100.0%; height: 100.0%;">Elixir Rooftop Bar - 646 Ann St</div>')[0];
+                popup_2ffc680793204bb8bb38674a03357717.setContent(html_6f093ebc850b4c5ba629628d40bc0237);
+            
+
+            marker_3dd87d556d934d3d88aba34a7cc23fa6.bindPopup(popup_2ffc680793204bb8bb38674a03357717);
+
+            
+        
+    
+
+            var marker_6a5a3c75bd5f49da99e6ef8331f23400 = L.marker(
+                [-27.470306,153.030329],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_b59523bb3aab4bc594877a54e68d3b52 = L.popup({maxWidth: '300'});
+
+            
+                var html_17fdc3724ff942ae98d02011cbd2037e = $('<div id="html_17fdc3724ff942ae98d02011cbd2037e" style="width: 100.0%; height: 100.0%;">Mr & Mrs G Riverbar - 1 Eagle St</div>')[0];
+                popup_b59523bb3aab4bc594877a54e68d3b52.setContent(html_17fdc3724ff942ae98d02011cbd2037e);
+            
+
+            marker_6a5a3c75bd5f49da99e6ef8331f23400.bindPopup(popup_b59523bb3aab4bc594877a54e68d3b52);
+
+            
+        
+    
+
+            var marker_4c02fab878754a90a042a97ee276fa42 = L.marker(
+                [-27.4581493,153.035017],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_eb910c7280d04625bfa1363a6127d182 = L.popup({maxWidth: '300'});
+
+            
+                var html_2de926bb11924998810e2b6ee5b4cbc9 = $('<div id="html_2de926bb11924998810e2b6ee5b4cbc9" style="width: 100.0%; height: 100.0%;">The Bowery - 676 Ann St</div>')[0];
+                popup_eb910c7280d04625bfa1363a6127d182.setContent(html_2de926bb11924998810e2b6ee5b4cbc9);
+            
+
+            marker_4c02fab878754a90a042a97ee276fa42.bindPopup(popup_eb910c7280d04625bfa1363a6127d182);
+
+            
+        
+    
+
+            var marker_132c5f20fa094ccb9fe5a49503641f88 = L.marker(
+                [-27.4671456,153.0304159],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_6ecec0a5dcdb4c1e90365d3df1b75146 = L.popup({maxWidth: '300'});
+
+            
+                var html_90670d2f9afa47188b9b6f722dcf9cb3 = $('<div id="html_90670d2f9afa47188b9b6f722dcf9cb3" style="width: 100.0%; height: 100.0%;">Blackbird Bar & Grill - Riverside Centre, 123 Eagle St</div>')[0];
+                popup_6ecec0a5dcdb4c1e90365d3df1b75146.setContent(html_90670d2f9afa47188b9b6f722dcf9cb3);
+            
+
+            marker_132c5f20fa094ccb9fe5a49503641f88.bindPopup(popup_6ecec0a5dcdb4c1e90365d3df1b75146);
+
+            
+        
+    
+
+            var marker_2f329fde40964ef6b5d59b64d5362cb2 = L.marker(
+                [-27.4706286,153.0296737],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_14bee5105f3740d9944c0e81fe2a2331 = L.popup({maxWidth: '300'});
+
+            
+                var html_d1ec6f80ca474ccd8db7794b686ed008 = $('<div id="html_d1ec6f80ca474ccd8db7794b686ed008" style="width: 100.0%; height: 100.0%;">THE Laneway - 181 Mary St</div>')[0];
+                popup_14bee5105f3740d9944c0e81fe2a2331.setContent(html_d1ec6f80ca474ccd8db7794b686ed008);
+            
+
+            marker_2f329fde40964ef6b5d59b64d5362cb2.bindPopup(popup_14bee5105f3740d9944c0e81fe2a2331);
+
+            
+        
+    
+
+            var marker_fd4ebc7d20604dd1b8f56839decf5969 = L.marker(
+                [-27.4662286,153.0259749],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_68039e31e9e7417baf80b3cc37b6f58f = L.popup({maxWidth: '300'});
+
+            
+                var html_8947e79be7894440a6f280041d6602d2 = $('<div id="html_8947e79be7894440a6f280041d6602d2" style="width: 100.0%; height: 100.0%;">Platform Bar - 270 Ann St</div>')[0];
+                popup_68039e31e9e7417baf80b3cc37b6f58f.setContent(html_8947e79be7894440a6f280041d6602d2);
+            
+
+            marker_fd4ebc7d20604dd1b8f56839decf5969.bindPopup(popup_68039e31e9e7417baf80b3cc37b6f58f);
+
+            
+        
+    
+
+            var marker_4d67dff80a324cd3ac8ee628fd530cc6 = L.marker(
+                [-27.4737034,153.017731],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_826b2ca4a2924d6999b869a9123ac3fe = L.popup({maxWidth: '300'});
+
+            
+                var html_2c3f9e9d943e46c0819f26aabe9a9cb6 = $('<div id="html_2c3f9e9d943e46c0819f26aabe9a9cb6" style="width: 100.0%; height: 100.0%;">Maker - 9 Fish Ln</div>')[0];
+                popup_826b2ca4a2924d6999b869a9123ac3fe.setContent(html_2c3f9e9d943e46c0819f26aabe9a9cb6);
+            
+
+            marker_4d67dff80a324cd3ac8ee628fd530cc6.bindPopup(popup_826b2ca4a2924d6999b869a9123ac3fe);
+
+            
+        
+    
+
+            var marker_96c33d885e954f1dab7a7ca0686a08f7 = L.marker(
+                [-27.4645199,153.0125812],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_b825f2b5d61249f483d33eca977b2b8e = L.popup({maxWidth: '300'});
+
+            
+                var html_eab70aadf4cc4d6c8b5c253fb730f8a2 = $('<div id="html_eab70aadf4cc4d6c8b5c253fb730f8a2" style="width: 100.0%; height: 100.0%;">Brewski Bar - 22 Caxton St</div>')[0];
+                popup_b825f2b5d61249f483d33eca977b2b8e.setContent(html_eab70aadf4cc4d6c8b5c253fb730f8a2);
+            
+
+            marker_96c33d885e954f1dab7a7ca0686a08f7.bindPopup(popup_b825f2b5d61249f483d33eca977b2b8e);
+
+            
+        
+    
+
+            var marker_4899bdf9c38141b5b2cab75dc5e4a43f = L.marker(
+                [-27.4657036,153.0259974],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_7acfeacf31514121bca8e7ba5494e36c = L.popup({maxWidth: '300'});
+
+            
+                var html_c83063cbc1dd430b9239e575d3338478 = $('<div id="html_c83063cbc1dd430b9239e575d3338478" style="width: 100.0%; height: 100.0%;">CuvÃ©e Lounge Bar Brisbane - 249 Turbot St</div>')[0];
+                popup_7acfeacf31514121bca8e7ba5494e36c.setContent(html_c83063cbc1dd430b9239e575d3338478);
+            
+
+            marker_4899bdf9c38141b5b2cab75dc5e4a43f.bindPopup(popup_7acfeacf31514121bca8e7ba5494e36c);
+
+            
+        
+    
+
+            var marker_6ecce17126ce491aa8154113b375194f = L.marker(
+                [-27.4671898,153.0278901],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_02fbff192bf640b1a9a9dd8366b5c165 = L.popup({maxWidth: '300'});
+
+            
+                var html_0eecc62bd9f245ffb0acacecec3e6e33 = $('<div id="html_0eecc62bd9f245ffb0acacecec3e6e33" style="width: 100.0%; height: 100.0%;">Lennons Restaurant & Bar - 2/72 Queen St</div>')[0];
+                popup_02fbff192bf640b1a9a9dd8366b5c165.setContent(html_0eecc62bd9f245ffb0acacecec3e6e33);
+            
+
+            marker_6ecce17126ce491aa8154113b375194f.bindPopup(popup_02fbff192bf640b1a9a9dd8366b5c165);
+
+            
+        
+    
+
+            var marker_749208da3f8e4b4cb7769dba7f6b94b5 = L.marker(
+                [-27.4657999,153.0309008],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_e39a2c6509694bd08908e063f2e3c5b1 = L.popup({maxWidth: '300'});
+
+            
+                var html_f0a571ade91847aa992e169d708d206f = $('<div id="html_f0a571ade91847aa992e169d708d206f" style="width: 100.0%; height: 100.0%;">Alchemy Restaurant & Bar - 175 Eagle St</div>')[0];
+                popup_e39a2c6509694bd08908e063f2e3c5b1.setContent(html_f0a571ade91847aa992e169d708d206f);
+            
+
+            marker_749208da3f8e4b4cb7769dba7f6b94b5.bindPopup(popup_e39a2c6509694bd08908e063f2e3c5b1);
+
+            
+        
+    
+
+            var marker_5ed604d08c754cc18a52e8e6cde668a2 = L.marker(
+                [-27.4773565,153.0284154],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_5b46fe071b964d9ab0f6eb5607c2d669 = L.popup({maxWidth: '300'});
+
+            
+                var html_93d7445b4ec542a19cdf93d419acbf4f = $('<div id="html_93d7445b4ec542a19cdf93d419acbf4f" style="width: 100.0%; height: 100.0%;">Botanic Bar - P Block, Level 3/2 George Street</div>')[0];
+                popup_5b46fe071b964d9ab0f6eb5607c2d669.setContent(html_93d7445b4ec542a19cdf93d419acbf4f);
+            
+
+            marker_5ed604d08c754cc18a52e8e6cde668a2.bindPopup(popup_5b46fe071b964d9ab0f6eb5607c2d669);
+
+            
+        
+    
+
+            var marker_4f0f8138092842b6b85d71a8b5480f1f = L.marker(
+                [-27.4657999,153.0309008],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_6ffabaa35a34494a91adeee79541c0c9 = L.popup({maxWidth: '300'});
+
+            
+                var html_2aa5136796124701923d503e0c914840 = $('<div id="html_2aa5136796124701923d503e0c914840" style="width: 100.0%; height: 100.0%;">Bar Pacino - 175 Eagle St</div>')[0];
+                popup_6ffabaa35a34494a91adeee79541c0c9.setContent(html_2aa5136796124701923d503e0c914840);
+            
+
+            marker_4f0f8138092842b6b85d71a8b5480f1f.bindPopup(popup_6ffabaa35a34494a91adeee79541c0c9);
+
+            
+        
+    
+
+            var marker_422c934ebe9a45439f437e579d544312 = L.marker(
+                [-27.4683141,153.0231789],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_5b0bdafd4e0b441e85f8a68ebd19b030 = L.popup({maxWidth: '300'});
+
+            
+                var html_28e293a85c26450c9dc7d1a362a5631d = $('<div id="html_28e293a85c26450c9dc7d1a362a5631d" style="width: 100.0%; height: 100.0%;">Sixteen Antlers Rooftop Bar - Level 16 Pullman & Mercure Hotel Cnr Ann &, Roma St</div>')[0];
+                popup_5b0bdafd4e0b441e85f8a68ebd19b030.setContent(html_28e293a85c26450c9dc7d1a362a5631d);
+            
+
+            marker_422c934ebe9a45439f437e579d544312.bindPopup(popup_5b0bdafd4e0b441e85f8a68ebd19b030);
+
+            
+        
+    
+
+            var marker_aeec5a27ee3d4b8093046faa7864a445 = L.marker(
+                [-27.4706286,153.0296737],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_7bb255db22c049a5b1d0055275de2901 = L.popup({maxWidth: '300'});
+
+            
+                var html_4ed8abfe4042416f9e5106eaecb0dafc = $('<div id="html_4ed8abfe4042416f9e5106eaecb0dafc" style="width: 100.0%; height: 100.0%;">THE Laneway - 181 Mary St</div>')[0];
+                popup_7bb255db22c049a5b1d0055275de2901.setContent(html_4ed8abfe4042416f9e5106eaecb0dafc);
+            
+
+            marker_aeec5a27ee3d4b8093046faa7864a445.bindPopup(popup_7bb255db22c049a5b1d0055275de2901);
+
+            
+        
+    
+
+            var marker_53beba990d3e48dc8b505305c3723537 = L.marker(
+                [-27.4690934,153.027356],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_fb27b238a7694f4fadd94cfaddd1831b = L.popup({maxWidth: '300'});
+
+            
+                var html_636b58b68000452ba4e35d5f30b957fb = $('<div id="html_636b58b68000452ba4e35d5f30b957fb" style="width: 100.0%; height: 100.0%;">Embassy Craft Beer Bar - 214 Elizabeth St</div>')[0];
+                popup_fb27b238a7694f4fadd94cfaddd1831b.setContent(html_636b58b68000452ba4e35d5f30b957fb);
+            
+
+            marker_53beba990d3e48dc8b505305c3723537.bindPopup(popup_fb27b238a7694f4fadd94cfaddd1831b);
+
+            
+        
+    
+
+            var marker_64c7f0d82fe54a8c879aa211330eb959 = L.marker(
+                [-27.4671087,153.0253817],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_ddee0ce1dbfd4b8884c798ac648ef287 = L.popup({maxWidth: '300'});
+
+            
+                var html_d5374178bebb4fd9963f701c44c39449 = $('<div id="html_d5374178bebb4fd9963f701c44c39449" style="width: 100.0%; height: 100.0%;">Down Under Bar & Grill - 308 Edward St</div>')[0];
+                popup_ddee0ce1dbfd4b8884c798ac648ef287.setContent(html_d5374178bebb4fd9963f701c44c39449);
+            
+
+            marker_64c7f0d82fe54a8c879aa211330eb959.bindPopup(popup_ddee0ce1dbfd4b8884c798ac648ef287);
+
+            
+        
+    
+
+            var marker_181a771a288e4559bb8e5c0c6901e623 = L.marker(
+                [-27.4741874,153.0174559],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_790ec155628642008a85e29b73c46491 = L.popup({maxWidth: '300'});
+
+            
+                var html_6b02c6cb4834413a8d8798a21bf35382 = $('<div id="html_6b02c6cb4834413a8d8798a21bf35382" style="width: 100.0%; height: 100.0%;">Dandys Rooftop Bar - 71/73 Melbourne St</div>')[0];
+                popup_790ec155628642008a85e29b73c46491.setContent(html_6b02c6cb4834413a8d8798a21bf35382);
+            
+
+            marker_181a771a288e4559bb8e5c0c6901e623.bindPopup(popup_790ec155628642008a85e29b73c46491);
+
+            
+        
+    
+
+            var marker_bd733174cb97456ca57d6804a3dd84f6 = L.marker(
+                [-27.458078,153.0348333],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_21cb42446aa14e8e8b9f2e3076567783 = L.popup({maxWidth: '300'});
+
+            
+                var html_74cdfc98791e46b0872a45dde9aa96ab = $('<div id="html_74cdfc98791e46b0872a45dde9aa96ab" style="width: 100.0%; height: 100.0%;">Black Bear Lodge - 322 Brunswick St</div>')[0];
+                popup_21cb42446aa14e8e8b9f2e3076567783.setContent(html_74cdfc98791e46b0872a45dde9aa96ab);
+            
+
+            marker_bd733174cb97456ca57d6804a3dd84f6.bindPopup(popup_21cb42446aa14e8e8b9f2e3076567783);
+
+            
+        
+    
+
+            var marker_5050a534d2a84801b97d455c5f1cb0e8 = L.marker(
+                [-27.4560178,153.0347609],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_4a3c9471053c4edb9ba4f7b8ebe09012 = L.popup({maxWidth: '300'});
+
+            
+                var html_3f52d3559b674e1d9614c3a4cbf3c653 = $('<div id="html_3f52d3559b674e1d9614c3a4cbf3c653" style="width: 100.0%; height: 100.0%;">The Wickham - 308 Wickham St</div>')[0];
+                popup_4a3c9471053c4edb9ba4f7b8ebe09012.setContent(html_3f52d3559b674e1d9614c3a4cbf3c653);
+            
+
+            marker_5050a534d2a84801b97d455c5f1cb0e8.bindPopup(popup_4a3c9471053c4edb9ba4f7b8ebe09012);
+
+            
+        
+    
+
+            var marker_a326f9f6dba64e45b7fd2681a46c6b6e = L.marker(
+                [-27.4593547,153.0350665],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_a79fcc86ad274a0f9d5c4236976e7ac6 = L.popup({maxWidth: '300'});
+
+            
+                var html_16f4cf17f3bc4e17a00ba5c36a390ab4 = $('<div id="html_16f4cf17f3bc4e17a00ba5c36a390ab4" style="width: 100.0%; height: 100.0%;">Family - 8 McLachlan St</div>')[0];
+                popup_a79fcc86ad274a0f9d5c4236976e7ac6.setContent(html_16f4cf17f3bc4e17a00ba5c36a390ab4);
+            
+
+            marker_a326f9f6dba64e45b7fd2681a46c6b6e.bindPopup(popup_a79fcc86ad274a0f9d5c4236976e7ac6);
+
+            
+        
+    
+
+            var marker_a75f58b0c04b4b51975bdb8b72f29c34 = L.marker(
+                [-27.4580913,153.0355806],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_ab474ff8836e4c9bb029fca6069422da = L.popup({maxWidth: '300'});
+
+            
+                var html_5a07c2553afb4da0ac39e4c521331fdc = $('<div id="html_5a07c2553afb4da0ac39e4c521331fdc" style="width: 100.0%; height: 100.0%;">The Beat Megaclub (LGBT Nightclub) - 677 Ann St</div>')[0];
+                popup_ab474ff8836e4c9bb029fca6069422da.setContent(html_5a07c2553afb4da0ac39e4c521331fdc);
+            
+
+            marker_a75f58b0c04b4b51975bdb8b72f29c34.bindPopup(popup_ab474ff8836e4c9bb029fca6069422da);
+
+            
+        
+    
+
+            var marker_9c1bb205120e4971ac271f724425621b = L.marker(
+                [-27.4586988,153.0345573],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_756d903205564d7a8551f8324bad6216 = L.popup({maxWidth: '300'});
+
+            
+                var html_955bbfa2e7104c84b144f6e939c526f0 = $('<div id="html_955bbfa2e7104c84b144f6e939c526f0" style="width: 100.0%; height: 100.0%;">X & Y Bar - 648 Ann St</div>')[0];
+                popup_756d903205564d7a8551f8324bad6216.setContent(html_955bbfa2e7104c84b144f6e939c526f0);
+            
+
+            marker_9c1bb205120e4971ac271f724425621b.bindPopup(popup_756d903205564d7a8551f8324bad6216);
+
+            
+        
+    
+
+            var marker_bb01e508c81e47f6852a1c108d1ecb1e = L.marker(
+                [-27.4662286,153.0259749],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_f6796e828a9a41d3a34e6915b8003f79 = L.popup({maxWidth: '300'});
+
+            
+                var html_9f0d06befb1946ac859a9ddaca2e2395 = $('<div id="html_9f0d06befb1946ac859a9ddaca2e2395" style="width: 100.0%; height: 100.0%;">Platform Bar - 270 Ann St</div>')[0];
+                popup_f6796e828a9a41d3a34e6915b8003f79.setContent(html_9f0d06befb1946ac859a9ddaca2e2395);
+            
+
+            marker_bb01e508c81e47f6852a1c108d1ecb1e.bindPopup(popup_f6796e828a9a41d3a34e6915b8003f79);
+
+            
+        
+    
+
+            var marker_4a56e65902724ec585171dd48f196a9f = L.marker(
+                [-27.482576,153.018949],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_fcc6fe1d2ed847a3ace88f48b0f3d88f = L.popup({maxWidth: '300'});
+
+            
+                var html_91a27859df8c4cc3b49ef083db1024f9 = $('<div id="html_91a27859df8c4cc3b49ef083db1024f9" style="width: 100.0%; height: 100.0%;">Lucky Duck Cafe and Bar - 15 Gladstone Rd</div>')[0];
+                popup_fcc6fe1d2ed847a3ace88f48b0f3d88f.setContent(html_91a27859df8c4cc3b49ef083db1024f9);
+            
+
+            marker_4a56e65902724ec585171dd48f196a9f.bindPopup(popup_fcc6fe1d2ed847a3ace88f48b0f3d88f);
+
+            
+        
+    
+
+            var marker_8ea71ed248964606976cca5262b92cda = L.marker(
+                [-27.4624524,153.0398037],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(marker_cluster_2efd5912eb514b30a8aa4d9571f4e42b);
+            
+    
+            var popup_7b2351ac02c940bea463dd8d8800bfaa = L.popup({maxWidth: '300'});
+
+            
+                var html_b2fa60ca3bf74631854d1dc8c4ef46d2 = $('<div id="html_b2fa60ca3bf74631854d1dc8c4ef46d2" style="width: 100.0%; height: 100.0%;">The Brunswick Hotel 569 Brunswick St</div>')[0];
+                popup_7b2351ac02c940bea463dd8d8800bfaa.setContent(html_b2fa60ca3bf74631854d1dc8c4ef46d2);
+            
+
+            marker_8ea71ed248964606976cca5262b92cda.bindPopup(popup_7b2351ac02c940bea463dd8d8800bfaa);
+
+            
+        
+</script>
