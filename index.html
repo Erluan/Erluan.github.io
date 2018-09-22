@@ -1,955 +1,178 @@
+<!--
+ Copyright 2016 Google Inc.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
 <!DOCTYPE html>
-<head>    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Shops</title>
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    
-            <style> #map_3707fffcbc33411281ebccb6dc2bdf01 {
-                position : relative;
-                width : 100.0%;
-                height: 100.0%;
-                left: 0.0%;
-                top: 0.0%;
-                }
-            </style>
-        
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather PWA</title>
+  <link rel="stylesheet" type="text/css" href="styles/inline.css">
+
+  <!-- TODO add manifest here -->
+  <link rel="manifest" href="/manifest.json">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
 </head>
-<body>    
-    
-            <div class="folium-map" id="map_3707fffcbc33411281ebccb6dc2bdf01" ></div>
-        
+<body>
+
+  <header class="header">
+    <h1 class="header__title">Weather PWA</h1>
+    <button id="butRefresh" class="headerButton" aria-label="Refresh"></button>
+    <button id="butAdd" class="headerButton" aria-label="Add"></button>
+  </header>
+
+  <main class="main">
+    <div class="card cardTemplate weather-forecast" hidden>
+      <div class="city-key" hidden></div>
+      <div class="card-last-updated" hidden></div>
+      <div class="location"></div>
+      <div class="date"></div>
+      <div class="description"></div>
+      <div class="current">
+        <div class="visual">
+          <div class="icon"></div>
+          <div class="temperature">
+            <span class="value"></span><span class="scale">°F</span>
+          </div>
+        </div>
+        <div class="description">
+          <div class="humidity"></div>
+          <div class="wind">
+            <span class="value"></span>
+            <span class="scale">mph</span>
+            <span class="direction"></span>°
+          </div>
+          <div class="sunrise"></div>
+          <div class="sunset"></div>
+        </div>
+      </div>
+      <div class="future">
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Add new city</div>
+      <div class="dialog-body">
+        <select id="selectCityToAdd">
+          <!-- Values map to Yahoo Weather API Where On Earth Identifiers (WOEIDs).
+               https://developer.yahoo.com/weather/documentation.html#req -->
+          <option value="2357536">Austin, TX</option>
+          <option value="2367105">Boston, MA</option>
+          <option value="2379574">Chicago, IL</option>
+          <option value="2459115">New York, NY</option>
+          <option value="2475687">Portland, OR</option>
+          <option value="2487956">San Francisco, CA</option>
+          <option value="2490383">Seattle, WA</option>
+        </select>
+      </div>
+      <div class="dialog-buttons">
+        <button id="butAddCity" class="button">Add</button>
+        <button id="butAddCancel" class="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
+  </div>
+
+  <!-- Uncomment the line below when ready to test with fake data -->
+  <script src="scripts/app.js" async></script>
+
 </body>
-<script>    
-    
-
-            
-                var bounds = null;
-            
-
-            var map_3707fffcbc33411281ebccb6dc2bdf01 = L.map(
-                                  'map_3707fffcbc33411281ebccb6dc2bdf01',
-                                  {center: [-27.4697707,153.02512350000006],
-                                  zoom: 12,
-                                  maxBounds: bounds,
-                                  layers: [],
-                                  worldCopyJump: false,
-                                  crs: L.CRS.EPSG3857
-                                 });
-            
-        
-    
-            var tile_layer_1da12d1f11a74c728717add80778f816 = L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-  "attribution": null,
-  "detectRetina": false,
-  "maxZoom": 18,
-  "minZoom": 1,
-  "noWrap": false,
-  "subdomains": "abc"
-}
-                ).addTo(map_3707fffcbc33411281ebccb6dc2bdf01);
-        
-    
-            var marker_cluster_d0dedda3b7254a548c83d7befcd05b98 = L.markerClusterGroup({
-                
-            });
-            map_3707fffcbc33411281ebccb6dc2bdf01.addLayer(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-
-            var marker_fc53a15f5e9c43deaa25c4357937b2e4 = L.marker(
-                [-27.469766,153.027337],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_b06aa9625cfa49fe95e8a7e7479f7cd5 = L.popup({maxWidth: '300'});
-
-            
-                var html_6bd4ea284e4c4cdd88f604bfe349268e = $('<div id="html_6bd4ea284e4c4cdd88f604bfe349268e" style="width: 100.0%; height: 100.0%;">Strauss - 189 Elizabeth St</div>')[0];
-                popup_b06aa9625cfa49fe95e8a7e7479f7cd5.setContent(html_6bd4ea284e4c4cdd88f604bfe349268e);
-            
-
-            marker_fc53a15f5e9c43deaa25c4357937b2e4.bindPopup(popup_b06aa9625cfa49fe95e8a7e7479f7cd5);
-
-            
-        
-    
-
-            var marker_1595d9d1c0a44d1eae8ab7f19a6c26ad = L.marker(
-                [-27.4728403,153.0275664],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_3b5f4d846eb34353ae09569670aa4db7 = L.popup({maxWidth: '300'});
-
-            
-                var html_58ef033e170a4c74b6a6ea7a0bf3db04 = $('<div id="html_58ef033e170a4c74b6a6ea7a0bf3db04" style="width: 100.0%; height: 100.0%;">Coffee Anthology - 126 Margaret St</div>')[0];
-                popup_3b5f4d846eb34353ae09569670aa4db7.setContent(html_58ef033e170a4c74b6a6ea7a0bf3db04);
-            
-
-            marker_1595d9d1c0a44d1eae8ab7f19a6c26ad.bindPopup(popup_3b5f4d846eb34353ae09569670aa4db7);
-
-            
-        
-    
-
-            var marker_ca388625ed174c129a322ed9e717017a = L.marker(
-                [-27.4669357,153.0261663],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_272e98d7bf404642b4ac3e33912a9c66 = L.popup({maxWidth: '300'});
-
-            
-                var html_fd881deed98a423bba60ac5241d1236d = $('<div id="html_fd881deed98a423bba60ac5241d1236d" style="width: 100.0%; height: 100.0%;">Duce & Co - 271 Edward St</div>')[0];
-                popup_272e98d7bf404642b4ac3e33912a9c66.setContent(html_fd881deed98a423bba60ac5241d1236d);
-            
-
-            marker_ca388625ed174c129a322ed9e717017a.bindPopup(popup_272e98d7bf404642b4ac3e33912a9c66);
-
-            
-        
-    
-
-            var marker_436c3bb87fe2491fa22822066703d92b = L.marker(
-                [-27.4587181,153.0355796],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_ee9d81600a1a48f2a7b74bcdc2e8d6ce = L.popup({maxWidth: '300'});
-
-            
-                var html_478604edd4f64adbb5392c498dd1d822 = $('<div id="html_478604edd4f64adbb5392c498dd1d822" style="width: 100.0%; height: 100.0%;">LTD Espresso - 362 Brunswick S</div>')[0];
-                popup_ee9d81600a1a48f2a7b74bcdc2e8d6ce.setContent(html_478604edd4f64adbb5392c498dd1d822);
-            
-
-            marker_436c3bb87fe2491fa22822066703d92b.bindPopup(popup_ee9d81600a1a48f2a7b74bcdc2e8d6ce);
-
-            
-        
-    
-
-            var marker_b3db658281cf457591fb844f33e85141 = L.marker(
-                [-27.4716983,153.0255427],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_cee7fc44a54c4da5ad153a1957ce0e8b = L.popup({maxWidth: '300'});
-
-            
-                var html_d75f30d637eb4411b1d7e4173e20df25 = $('<div id="html_d75f30d637eb4411b1d7e4173e20df25" style="width: 100.0%; height: 100.0%;">John Mills Himself - 40 Charlotte St</div>')[0];
-                popup_cee7fc44a54c4da5ad153a1957ce0e8b.setContent(html_d75f30d637eb4411b1d7e4173e20df25);
-            
-
-            marker_b3db658281cf457591fb844f33e85141.bindPopup(popup_cee7fc44a54c4da5ad153a1957ce0e8b);
-
-            
-        
-    
-
-            var marker_2ff1d9c0db394dd68f0aed3263edc1f4 = L.marker(
-                [-27.4734607,153.0177207],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_7d35047f078f405c9466e0256e654cc3 = L.popup({maxWidth: '300'});
-
-            
-                var html_89f1083352ab4892a9772860e94c3518 = $('<div id="html_89f1083352ab4892a9772860e94c3518" style="width: 100.0%; height: 100.0%;">Gauge - 77 Grey St</div>')[0];
-                popup_7d35047f078f405c9466e0256e654cc3.setContent(html_89f1083352ab4892a9772860e94c3518);
-            
-
-            marker_2ff1d9c0db394dd68f0aed3263edc1f4.bindPopup(popup_7d35047f078f405c9466e0256e654cc3);
-
-            
-        
-    
-
-            var marker_02cd67881bab449683c73d321da58647 = L.marker(
-                [-27.4465428,153.1717903],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_01169094502d434788f6e9948659147e = L.popup({maxWidth: '300'});
-
-            
-                var html_42cdc30d7995440e9597a38bbaead76c = $('<div id="html_42cdc30d7995440e9597a38bbaead76c" style="width: 100.0%; height: 100.0%;">Dramanti CBD - 94 Tingal Rd</div>')[0];
-                popup_01169094502d434788f6e9948659147e.setContent(html_42cdc30d7995440e9597a38bbaead76c);
-            
-
-            marker_02cd67881bab449683c73d321da58647.bindPopup(popup_01169094502d434788f6e9948659147e);
-
-            
-        
-    
-
-            var marker_7c83d891a99e42fa9755e88c8dc798ff = L.marker(
-                [-27.4556022,153.0407333],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_f0e638f86d704a4d9df72b712e0a030a = L.popup({maxWidth: '300'});
-
-            
-                var html_030425d588034eda9afef9d70e034408 = $('<div id="html_030425d588034eda9afef9d70e034408" style="width: 100.0%; height: 100.0%;">Bellissimo - 30 Wandoo St</div>')[0];
-                popup_f0e638f86d704a4d9df72b712e0a030a.setContent(html_030425d588034eda9afef9d70e034408);
-            
-
-            marker_7c83d891a99e42fa9755e88c8dc798ff.bindPopup(popup_f0e638f86d704a4d9df72b712e0a030a);
-
-            
-        
-    
-
-            var marker_ddafa74ad32e4635a5cede6d12ed9b92 = L.marker(
-                [-27.4659615,153.0278854],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_14c61a88307449568726568b9a9707e5 = L.popup({maxWidth: '300'});
-
-            
-                var html_f973c1e611fe4800ac16633cbef993ab = $('<div id="html_f973c1e611fe4800ac16633cbef993ab" style="width: 100.0%; height: 100.0%;">Botero - 258 Adelaide St</div>')[0];
-                popup_14c61a88307449568726568b9a9707e5.setContent(html_f973c1e611fe4800ac16633cbef993ab);
-            
-
-            marker_ddafa74ad32e4635a5cede6d12ed9b92.bindPopup(popup_14c61a88307449568726568b9a9707e5);
-
-            
-        
-    
-
-            var marker_bca2c977bdc14a1eb79c11ec0c69448f = L.marker(
-                [-27.4575312,153.0367881],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_ad04fa8bdb8a4f78be0b516d1bbe3838 = L.popup({maxWidth: '300'});
-
-            
-                var html_de07a943668242c388219ab8b9dac869 = $('<div id="html_de07a943668242c388219ab8b9dac869" style="width: 100.0%; height: 100.0%;">Bear Bones - 2/66 McLachlan St</div>')[0];
-                popup_ad04fa8bdb8a4f78be0b516d1bbe3838.setContent(html_de07a943668242c388219ab8b9dac869);
-            
-
-            marker_bca2c977bdc14a1eb79c11ec0c69448f.bindPopup(popup_ad04fa8bdb8a4f78be0b516d1bbe3838);
-
-            
-        
-    
-
-            var marker_ad705271ac674fb19f2813bdd74675f6 = L.marker(
-                [-27.4554049,153.039452],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_2f900c2481894300905a13c608e87d5b = L.popup({maxWidth: '300'});
-
-            
-                var html_26787ffc2cc54b6b912eff85f6441ffa = $('<div id="html_26787ffc2cc54b6b912eff85f6441ffa" style="width: 100.0%; height: 100.0%;">Campos - 11 Wandoo St</div>')[0];
-                popup_2f900c2481894300905a13c608e87d5b.setContent(html_26787ffc2cc54b6b912eff85f6441ffa);
-            
-
-            marker_ad705271ac674fb19f2813bdd74675f6.bindPopup(popup_2f900c2481894300905a13c608e87d5b);
-
-            
-        
-    
-
-            var marker_df1ced442727444eab2b56d8273f17a9 = L.marker(
-                [-27.4669446,153.0192384],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_4e0a40651f084db489789744fa559adb = L.popup({maxWidth: '300'});
-
-            
-                var html_977f84ca7682454fa2dc15886fa0c71c = $('<div id="html_977f84ca7682454fa2dc15886fa0c71c" style="width: 100.0%; height: 100.0%;">Contessa by Blackstar Coffee - 154 Roma St</div>')[0];
-                popup_4e0a40651f084db489789744fa559adb.setContent(html_977f84ca7682454fa2dc15886fa0c71c);
-            
-
-            marker_df1ced442727444eab2b56d8273f17a9.bindPopup(popup_4e0a40651f084db489789744fa559adb);
-
-            
-        
-    
-
-            var marker_68c1e6ecf9c044d491e0e4425df585ae = L.marker(
-                [-27.4689097,153.0271305],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_a21e734c01734c708eab8e90e7db246e = L.popup({maxWidth: '300'});
-
-            
-                var html_feb659d547434609adc98d0caeb6042a = $('<div id="html_feb659d547434609adc98d0caeb6042a" style="width: 100.0%; height: 100.0%;">Marchetti - Tattersalls Arcade, 202-210 Edward St</div>')[0];
-                popup_a21e734c01734c708eab8e90e7db246e.setContent(html_feb659d547434609adc98d0caeb6042a);
-            
-
-            marker_68c1e6ecf9c044d491e0e4425df585ae.bindPopup(popup_a21e734c01734c708eab8e90e7db246e);
-
-            
-        
-    
-
-            var marker_b2b4a4a4142c46ccb70d699e4609b511 = L.marker(
-                [-27.4719308,153.0278943],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_3e98769ddb0e4ba5b3f37045e4dbc8ed = L.popup({maxWidth: '300'});
-
-            
-                var html_8d7a6a361c5a40b98c68cd7ef888df6d = $('<div id="html_8d7a6a361c5a40b98c68cd7ef888df6d" style="width: 100.0%; height: 100.0%;">Tobys - 79 Albert St</div>')[0];
-                popup_3e98769ddb0e4ba5b3f37045e4dbc8ed.setContent(html_8d7a6a361c5a40b98c68cd7ef888df6d);
-            
-
-            marker_b2b4a4a4142c46ccb70d699e4609b511.bindPopup(popup_3e98769ddb0e4ba5b3f37045e4dbc8ed);
-
-            
-        
-    
-
-            var marker_3f066ab45df84c92ba3b1aa1b7af184c = L.marker(
-                [-27.4675084,153.025809],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_8a83c4734326417983feed47dfcaf4a5 = L.popup({maxWidth: '300'});
-
-            
-                var html_42044d7f224e492fa5b2dc7866a312a0 = $('<div id="html_42044d7f224e492fa5b2dc7866a312a0" style="width: 100.0%; height: 100.0%;">Ricochet Espresso - 276 Edward St</div>')[0];
-                popup_8a83c4734326417983feed47dfcaf4a5.setContent(html_42044d7f224e492fa5b2dc7866a312a0);
-            
-
-            marker_3f066ab45df84c92ba3b1aa1b7af184c.bindPopup(popup_8a83c4734326417983feed47dfcaf4a5);
-
-            
-        
-    
-
-            var marker_de263f3fb7b8441ba1614aec9bed1e51 = L.marker(
-                [-27.4818156,153.0233765],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_914f3655ffc74ca984c4aa4ea13b4c13 = L.popup({maxWidth: '300'});
-
-            
-                var html_3d0d486078df41d7bf603c4ac2c1e7fc = $('<div id="html_3d0d486078df41d7bf603c4ac2c1e7fc" style="width: 100.0%; height: 100.0%;">Pourboy - 271 Grey St</div>')[0];
-                popup_914f3655ffc74ca984c4aa4ea13b4c13.setContent(html_3d0d486078df41d7bf603c4ac2c1e7fc);
-            
-
-            marker_de263f3fb7b8441ba1614aec9bed1e51.bindPopup(popup_914f3655ffc74ca984c4aa4ea13b4c13);
-
-            
-        
-    
-
-            var marker_6511490b84814cb9809f172817aa9581 = L.marker(
-                [-27.4187724,153.0726795],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_e39fc592c4f74c8ca0042d32b18cef39 = L.popup({maxWidth: '300'});
-
-            
-                var html_7c2ee45db2af476a8d1f8007bd37a4e0 = $('<div id="html_7c2ee45db2af476a8d1f8007bd37a4e0" style="width: 100.0%; height: 100.0%;">Wolff Coffee - 140A Gerler Rd</div>')[0];
-                popup_e39fc592c4f74c8ca0042d32b18cef39.setContent(html_7c2ee45db2af476a8d1f8007bd37a4e0);
-            
-
-            marker_6511490b84814cb9809f172817aa9581.bindPopup(popup_e39fc592c4f74c8ca0042d32b18cef39);
-
-            
-        
-    
-
-            var marker_42228ca7fb1645cca74ff7550f2db0f0 = L.marker(
-                [-27.4282082,153.0073076],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_2452cb0dc8b940cd8e57f2e8a9c17542 = L.popup({maxWidth: '300'});
-
-            
-                var html_2acda61c9f39421cb313f9eef75eb4c3 = $('<div id="html_2acda61c9f39421cb313f9eef75eb4c3" style="width: 100.0%; height: 100.0%;">The Tiller Coffee - 81 Mina Parade</div>')[0];
-                popup_2452cb0dc8b940cd8e57f2e8a9c17542.setContent(html_2acda61c9f39421cb313f9eef75eb4c3);
-            
-
-            marker_42228ca7fb1645cca74ff7550f2db0f0.bindPopup(popup_2452cb0dc8b940cd8e57f2e8a9c17542);
-
-            
-        
-    
-
-            var marker_0566774d34df4ee49cb611c4ec8e3950 = L.marker(
-                [-27.4193224,153.0542078],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_ce3784bd18dc4b279be28cd8ba0b4f86 = L.popup({maxWidth: '300'});
-
-            
-                var html_00268114e7594c72a1c7d270bf4a7d32 = $('<div id="html_00268114e7594c72a1c7d270bf4a7d32" style="width: 100.0%; height: 100.0%;">Queen of Pops - 4/680 Sandgate Rd</div>')[0];
-                popup_ce3784bd18dc4b279be28cd8ba0b4f86.setContent(html_00268114e7594c72a1c7d270bf4a7d32);
-            
-
-            marker_0566774d34df4ee49cb611c4ec8e3950.bindPopup(popup_ce3784bd18dc4b279be28cd8ba0b4f86);
-
-            
-        
-    
-
-            var marker_a0ede710e52d4f88a4aa8e2c901e8bfc = L.marker(
-                [-27.4667576,152.9894419],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_899d0b5195d648c9aca516a7fbf514f5 = L.popup({maxWidth: '300'});
-
-            
-                var html_9e92e403205a4c0ca41c571bfb95171a = $('<div id="html_9e92e403205a4c0ca41c571bfb95171a" style="width: 100.0%; height: 100.0%;">Neighbourhood Coffee Roasters - 58 Rainworth Rd</div>')[0];
-                popup_899d0b5195d648c9aca516a7fbf514f5.setContent(html_9e92e403205a4c0ca41c571bfb95171a);
-            
-
-            marker_a0ede710e52d4f88a4aa8e2c901e8bfc.bindPopup(popup_899d0b5195d648c9aca516a7fbf514f5);
-
-            
-        
-    
-
-            var marker_0aa8072ea7f84370b23c3fb92b76bdcd = L.marker(
-                [-27.4649117,153.0434562],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_380b2f706bcb4d2e93387f025fd5fd58 = L.popup({maxWidth: '300'});
-
-            
-                var html_3c9febf0022e4ffda836455193ae59b7 = $('<div id="html_3c9febf0022e4ffda836455193ae59b7" style="width: 100.0%; height: 100.0%;">Death Before Decaf - 3/760-766 Brunswick St</div>')[0];
-                popup_380b2f706bcb4d2e93387f025fd5fd58.setContent(html_3c9febf0022e4ffda836455193ae59b7);
-            
-
-            marker_0aa8072ea7f84370b23c3fb92b76bdcd.bindPopup(popup_380b2f706bcb4d2e93387f025fd5fd58);
-
-            
-        
-    
-
-            var marker_26d8277835ad45c48ab10e5eedb746da = L.marker(
-                [-27.4326505,153.0452536],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_46afe50578ce4ee292bceecdba9e2807 = L.popup({maxWidth: '300'});
-
-            
-                var html_b3f58fadc9ca4d4c89a9d7f477b053bd = $('<div id="html_b3f58fadc9ca4d4c89a9d7f477b053bd" style="width: 100.0%; height: 100.0%;">Fonzie Abbott - 40 Fox St</div>')[0];
-                popup_46afe50578ce4ee292bceecdba9e2807.setContent(html_b3f58fadc9ca4d4c89a9d7f477b053bd);
-            
-
-            marker_26d8277835ad45c48ab10e5eedb746da.bindPopup(popup_46afe50578ce4ee292bceecdba9e2807);
-
-            
-        
-    
-
-            var marker_354fd4f159204637ac328652f52273b5 = L.marker(
-                [-27.468904,153.0062178],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_7d58b8ca9e834fc3bdd1e692d499f1c0 = L.popup({maxWidth: '300'});
-
-            
-                var html_10347226e05345c6b904c438a9e0a2fc = $('<div id="html_10347226e05345c6b904c438a9e0a2fc" style="width: 100.0%; height: 100.0%;">Bunker Coffee - 21 Railway Terrace</div>')[0];
-                popup_7d58b8ca9e834fc3bdd1e692d499f1c0.setContent(html_10347226e05345c6b904c438a9e0a2fc);
-            
-
-            marker_354fd4f159204637ac328652f52273b5.bindPopup(popup_7d58b8ca9e834fc3bdd1e692d499f1c0);
-
-            
-        
-    
-
-            var marker_9ebd532b6462497fa2cc2829a9e3c046 = L.marker(
-                [-27.4588013,153.0343315],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_ce8d74b99110404ba6d1ab5bcf19528a = L.popup({maxWidth: '300'});
-
-            
-                var html_84e33692ba254666bd7bb29e19799d7d = $('<div id="html_84e33692ba254666bd7bb29e19799d7d" style="width: 100.0%; height: 100.0%;">Elixir - 646 Ann St</div>')[0];
-                popup_ce8d74b99110404ba6d1ab5bcf19528a.setContent(html_84e33692ba254666bd7bb29e19799d7d);
-            
-
-            marker_9ebd532b6462497fa2cc2829a9e3c046.bindPopup(popup_ce8d74b99110404ba6d1ab5bcf19528a);
-
-            
-        
-    
-
-            var marker_afbc67101c81467d9c90fe0e84074727 = L.marker(
-                [-27.4582851,152.9948382],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_bdbd90ae2a214548a533f87c8319fa3e = L.popup({maxWidth: '300'});
-
-            
-                var html_1f02712160c64dc188e46f53b348250f = $('<div id="html_1f02712160c64dc188e46f53b348250f" style="width: 100.0%; height: 100.0%;">The Java Lounge - 161 Latrobe Terrace</div>')[0];
-                popup_bdbd90ae2a214548a533f87c8319fa3e.setContent(html_1f02712160c64dc188e46f53b348250f);
-            
-
-            marker_afbc67101c81467d9c90fe0e84074727.bindPopup(popup_bdbd90ae2a214548a533f87c8319fa3e);
-
-            
-        
-    
-
-            var marker_ca90a7a87e644c2aa7aaeb51660e3d21 = L.marker(
-                [-27.4582851,152.9948382],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_d72635c6841c41b6921b0fe46d278b22 = L.popup({maxWidth: '300'});
-
-            
-                var html_d92eb419ed7b4890840f674163a69fe1 = $('<div id="html_d92eb419ed7b4890840f674163a69fe1" style="width: 100.0%; height: 100.0%;">Blackstar - 44 Thomas St</div>')[0];
-                popup_d72635c6841c41b6921b0fe46d278b22.setContent(html_d92eb419ed7b4890840f674163a69fe1);
-            
-
-            marker_ca90a7a87e644c2aa7aaeb51660e3d21.bindPopup(popup_d72635c6841c41b6921b0fe46d278b22);
-
-            
-        
-    
-
-            var marker_450b4748024d470a9d82d961772b3c12 = L.marker(
-                [-27.5347398,152.9351301],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_dee3ef97163345a7868589a3f4c25d22 = L.popup({maxWidth: '300'});
-
-            
-                var html_4b37b1ab0fef4d12af44ea9ffaa68d20 = $('<div id="html_4b37b1ab0fef4d12af44ea9ffaa68d20" style="width: 100.0%; height: 100.0%;">Piggyback Caf - 86 Curragundi Rd</div>')[0];
-                popup_dee3ef97163345a7868589a3f4c25d22.setContent(html_4b37b1ab0fef4d12af44ea9ffaa68d20);
-            
-
-            marker_450b4748024d470a9d82d961772b3c12.bindPopup(popup_dee3ef97163345a7868589a3f4c25d22);
-
-            
-        
-    
-
-            var marker_82a37a9d3f4449a09bb5708f0070171a = L.marker(
-                [-27.4760113,153.0607568],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_d2c15341a342473eaf0d291b4a849359 = L.popup({maxWidth: '300'});
-
-            
-                var html_93898239aeb14a258859a26f7735ce5b = $('<div id="html_93898239aeb14a258859a26f7735ce5b" style="width: 100.0%; height: 100.0%;">Dovetail on Overend - 85 Overend St</div>')[0];
-                popup_d2c15341a342473eaf0d291b4a849359.setContent(html_93898239aeb14a258859a26f7735ce5b);
-            
-
-            marker_82a37a9d3f4449a09bb5708f0070171a.bindPopup(popup_d2c15341a342473eaf0d291b4a849359);
-
-            
-        
-    
-
-            var marker_6d0fd659a45249cdb984e02d46f01deb = L.marker(
-                [-27.2388268,153.024165],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_3c9e19d16a4d4b46884b4a24ac35e69f = L.popup({maxWidth: '300'});
-
-            
-                var html_83fd6bf99ec64b5c823fd5f81debde5f = $('<div id="html_83fd6bf99ec64b5c823fd5f81debde5f" style="width: 100.0%; height: 100.0%;">Told You So - 1/14 Discovery Dr</div>')[0];
-                popup_3c9e19d16a4d4b46884b4a24ac35e69f.setContent(html_83fd6bf99ec64b5c823fd5f81debde5f);
-            
-
-            marker_6d0fd659a45249cdb984e02d46f01deb.bindPopup(popup_3c9e19d16a4d4b46884b4a24ac35e69f);
-
-            
-        
-    
-
-            var marker_e8bc09ab579d4402a5cc77b7d749d9f7 = L.marker(
-                [-27.2383268,153.0221914],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_0eed6951255c4c38aa3ca79224ce70a2 = L.popup({maxWidth: '300'});
-
-            
-                var html_93dac6500fbd4096acd77f222a88bb54 = $('<div id="html_93dac6500fbd4096acd77f222a88bb54" style="width: 100.0%; height: 100.0%;">Fort Coffee - 6 Endeavour Blvd</div>')[0];
-                popup_0eed6951255c4c38aa3ca79224ce70a2.setContent(html_93dac6500fbd4096acd77f222a88bb54);
-            
-
-            marker_e8bc09ab579d4402a5cc77b7d749d9f7.bindPopup(popup_0eed6951255c4c38aa3ca79224ce70a2);
-
-            
-        
-    
-
-            var marker_a1b7be1c20b546a2939b9150718b9997 = L.marker(
-                [-27.485016,153.2376944],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_2336ac76695e4d54a7dc2acdbec67f9a = L.popup({maxWidth: '300'});
-
-            
-                var html_046516f11c8f48abaf190c5035898c0a = $('<div id="html_046516f11c8f48abaf190c5035898c0a" style="width: 100.0%; height: 100.0%;">First Coffee Co - 2/360 Main Rd</div>')[0];
-                popup_2336ac76695e4d54a7dc2acdbec67f9a.setContent(html_046516f11c8f48abaf190c5035898c0a);
-            
-
-            marker_a1b7be1c20b546a2939b9150718b9997.bindPopup(popup_2336ac76695e4d54a7dc2acdbec67f9a);
-
-            
-        
-    
-
-            var marker_0c67cdcff2f64b62bf53ed4b03ec99c3 = L.marker(
-                [-27.3248443,152.9818313],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_5e506b2f01074b7d81c66417ef248f3e = L.popup({maxWidth: '300'});
-
-            
-                var html_2babaaf498174300969f52acaafae687 = $('<div id="html_2babaaf498174300969f52acaafae687" style="width: 100.0%; height: 100.0%;">Cleanskin Coffee Co - 193 S Pine Rd</div>')[0];
-                popup_5e506b2f01074b7d81c66417ef248f3e.setContent(html_2babaaf498174300969f52acaafae687);
-            
-
-            marker_0c67cdcff2f64b62bf53ed4b03ec99c3.bindPopup(popup_5e506b2f01074b7d81c66417ef248f3e);
-
-            
-        
-    
-
-            var marker_bf7b73b210b84ffa9f313f5e2075eb5c = L.marker(
-                [-27.5076258,152.9384975],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_ed1b1d9332c140a49a1478cc85a30f77 = L.popup({maxWidth: '300'});
-
-            
-                var html_b1ce704016e44414adb5392fbb8a8c06 = $('<div id="html_b1ce704016e44414adb5392fbb8a8c06" style="width: 100.0%; height: 100.0%;">The Single Guys - 2/2051 Moggill Rd</div>')[0];
-                popup_ed1b1d9332c140a49a1478cc85a30f77.setContent(html_b1ce704016e44414adb5392fbb8a8c06);
-            
-
-            marker_bf7b73b210b84ffa9f313f5e2075eb5c.bindPopup(popup_ed1b1d9332c140a49a1478cc85a30f77);
-
-            
-        
-    
-
-            var marker_d3f74ef159e143f79dcf0b4a7ac6bd69 = L.marker(
-                [-27.4187724,153.0726795],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_73e6fa2fd5994a65940f9c935396b9f5 = L.popup({maxWidth: '300'});
-
-            
-                var html_d1555ac1bdb6447ea075f96582df680a = $('<div id="html_d1555ac1bdb6447ea075f96582df680a" style="width: 100.0%; height: 100.0%;">Big Bad Wolff Espresso Bar - 140B Gerler Rd</div>')[0];
-                popup_73e6fa2fd5994a65940f9c935396b9f5.setContent(html_d1555ac1bdb6447ea075f96582df680a);
-            
-
-            marker_d3f74ef159e143f79dcf0b4a7ac6bd69.bindPopup(popup_73e6fa2fd5994a65940f9c935396b9f5);
-
-            
-        
-    
-
-            var marker_2740c3941a5f4dfca31cd3afc6263778 = L.marker(
-                [-27.486347,153.0293942],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_0b360e017f2e450b908be329d3aafedd = L.popup({maxWidth: '300'});
-
-            
-                var html_9b03a40912fd45599366c78681f478bb = $('<div id="html_9b03a40912fd45599366c78681f478bb" style="width: 100.0%; height: 100.0%;">The Little Prince Espresso (reportedly closed) - 8 Annerley Rd</div>')[0];
-                popup_0b360e017f2e450b908be329d3aafedd.setContent(html_9b03a40912fd45599366c78681f478bb);
-            
-
-            marker_2740c3941a5f4dfca31cd3afc6263778.bindPopup(popup_0b360e017f2e450b908be329d3aafedd);
-
-            
-        
-    
-
-            var marker_8c64d028d5e944f8bd6cb6545b3ad0c6 = L.marker(
-                [-27.4689114,153.0271633],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_fcd3d9096ce54460a3aac4e37d483c18 = L.popup({maxWidth: '300'});
-
-            
-                var html_a636274b838f41a7bd63dc5b1c871a41 = $('<div id="html_a636274b838f41a7bd63dc5b1c871a41" style="width: 100.0%; height: 100.0%;">Gramercy Coffee - 200 Edward St</div>')[0];
-                popup_fcd3d9096ce54460a3aac4e37d483c18.setContent(html_a636274b838f41a7bd63dc5b1c871a41);
-            
-
-            marker_8c64d028d5e944f8bd6cb6545b3ad0c6.bindPopup(popup_fcd3d9096ce54460a3aac4e37d483c18);
-
-            
-        
-    
-
-            var marker_76553adcbef54dfe9554f58fdacf4d28 = L.marker(
-                [-27.4719037,153.0020558],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_9b5ede0e6e144a298db721a58e3f626f = L.popup({maxWidth: '300'});
-
-            
-                var html_58c415be4c8c4b0aa54af3c7d0c192e5 = $('<div id="html_58c415be4c8c4b0aa54af3c7d0c192e5" style="width: 100.0%; height: 100.0%;">The Odyssey Project (reportedly closed) - 55 Douglas St</div>')[0];
-                popup_9b5ede0e6e144a298db721a58e3f626f.setContent(html_58c415be4c8c4b0aa54af3c7d0c192e5);
-            
-
-            marker_76553adcbef54dfe9554f58fdacf4d28.bindPopup(popup_9b5ede0e6e144a298db721a58e3f626f);
-
-            
-        
-    
-
-            var marker_f511ba66e25743e2b7d660e42d05d4f1 = L.marker(
-                [-27.4588391,153.0357327],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_1d0342468e1c485198702b873e2f71a6 = L.popup({maxWidth: '300'});
-
-            
-                var html_551c0001b47a4bd28bbeeacfe2ec5c40 = $('<div id="html_551c0001b47a4bd28bbeeacfe2ec5c40" style="width: 100.0%; height: 100.0%;">Reverends Fine Coffee - 372 Brunswick St</div>')[0];
-                popup_1d0342468e1c485198702b873e2f71a6.setContent(html_551c0001b47a4bd28bbeeacfe2ec5c40);
-            
-
-            marker_f511ba66e25743e2b7d660e42d05d4f1.bindPopup(popup_1d0342468e1c485198702b873e2f71a6);
-
-            
-        
-    
-
-            var marker_ff74a1368ba54208b145c876b66dd943 = L.marker(
-                [-27.5076258,152.9384975],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_628cfcdb262049c5b080c06ac7a319de = L.popup({maxWidth: '300'});
-
-            
-                var html_4d396ff0443a41daac5acfd06a70551e = $('<div id="html_4d396ff0443a41daac5acfd06a70551e" style="width: 100.0%; height: 100.0%;">The Single Guys - 2/2051 Moggill Rd</div>')[0];
-                popup_628cfcdb262049c5b080c06ac7a319de.setContent(html_4d396ff0443a41daac5acfd06a70551e);
-            
-
-            marker_ff74a1368ba54208b145c876b66dd943.bindPopup(popup_628cfcdb262049c5b080c06ac7a319de);
-
-            
-        
-    
-
-            var marker_839151d59df544f0b21f6aa766476f6e = L.marker(
-                [-27.4452264,152.9941148],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(marker_cluster_d0dedda3b7254a548c83d7befcd05b98);
-            
-    
-            var popup_e7e787abd1474735a7320942775db528 = L.popup({maxWidth: '300'});
-
-            
-                var html_dc1bac82b051495bb43cd21eca7fe032 = $('<div id="html_dc1bac82b051495bb43cd21eca7fe032" style="width: 100.0%; height: 100.0%;">U&I Espresso - 215 Waterworks Rd</div>')[0];
-                popup_e7e787abd1474735a7320942775db528.setContent(html_dc1bac82b051495bb43cd21eca7fe032);
-            
-
-            marker_839151d59df544f0b21f6aa766476f6e.bindPopup(popup_e7e787abd1474735a7320942775db528);
-
-            
-        
-</script>
+</html>
