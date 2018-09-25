@@ -45,6 +45,8 @@
       recognition.onresult = function(e) {
         document.getElementById('transcript').value
                                  = e.results[0][0].transcript;
+        var textresponse = e.results[0][0].transcript;
+      console.log(textresponse);
         recognition.stop();
         document.getElementById('labnol').submit();
       };
@@ -53,8 +55,7 @@
         recognition.stop();
       }
 
-      var textresponse = e.results[0][0].transcript;
-      console.log(textresponse);
+
 
     }
 
