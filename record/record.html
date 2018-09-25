@@ -128,9 +128,10 @@
 					audioContext.close();
 					processor.disconnect();
 					tracks.forEach(track => track.stop());
-					// thefile = encoder.finish()
-					audioElement.src = URL.createObjectURL(encoder.finish());
-					console.log(audioElement.src);
+					thefile = encoder.finish();
+					// audioElement.src = URL.createObjectURL(encoder.finish());
+					audioElement.src = URL.createObjectURL(thefile);
+					console.log(thefile);
 				};
 
 				analizer(audioContext);
